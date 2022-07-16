@@ -43,10 +43,10 @@ router.post('/',async (req,res)=>{
 });
 
 router.get('/delete/:id',async(req,res)=>{
-    const _id = mongoose.Types.ObjectId(req.params.id);;
-    console.log(_id);
+    // const _id = mongoose.Types.ObjectId(req.params.id);;
+    // console.log(_id);
     try{
-        const response = Author.findByIdAndDelete(_id);
+        const response = await Author.findByIdAndDelete(req.params.id);
         console.log(`in try ${response}`);
         res.redirect('/authors');
     }catch(error){
